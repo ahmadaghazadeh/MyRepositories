@@ -1,3 +1,121 @@
 
-EasyRecycler
-<iframe width="560" height="315" src="https://www.youtube.com/embed/HREz61ww4hc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<body>
+    <section class="page-header">
+      <h1 class="project-name">EasyRecycler</h1>
+      <h2 class="project-tagline">EasyRecycler</h2>
+      
+        <a href="https://github.com/ahmadaghazadeh/EasyRecycler" class="btn">View on GitHub</a>
+      
+      
+    </section>
+
+    <section class="main-content">
+      <h1 id="easyrecycler-">EasyRecycler <a href="https://jitpack.io/#ahmadaghazadeh/easyRecycler"><img src="https://jitpack.io/v/ahmadaghazadeh/easyRecycler.svg" alt=""></a></h1>
+
+<p>This is a data binding easy use recycler</p>
+
+<p>Please note that this library is currently supported on android API 7 and above.</p>
+
+<p>EasyRecycler have  None,OneChoose, DragDrop, MultiChoose mode.</p>
+
+<div align="center">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/HREz61ww4hc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
+
+<h2 id="integration-with-existing-project">Integration with existing project</h2>
+
+<h3 id="setup">Setup</h3>
+
+<h5 id="buildgradle-project">build.gradle (project)</h5>
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">allprojects</span> <span class="o">{</span>
+    <span class="n">repositories</span> <span class="o">{</span>
+       
+        <span class="n">maven</span> <span class="o">{</span>
+            <span class="n">url</span> <span class="s1">'https://jitpack.io'</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="buildgradle-app">build.gradle (app)</h4>
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dependencies</span> <span class="o">{</span>
+     
+    <span class="n">implementation</span> <span class="s1">'com.github.ahmadaghazadeh:EasyRecycler:1.0.2'</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Demo Activity:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TextItem</span> <span class="kd">extends</span> <span class="n">BaseRecyclerModel</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">TextItem</span><span class="o">(</span><span class="n">String</span> <span class="n">text</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">text</span><span class="o">;</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getLayoutId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">item_text</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TextItem</span> <span class="kd">extends</span> <span class="n">BaseRecyclerModel</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">TextItem</span><span class="o">(</span><span class="n">String</span> <span class="n">text</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">text</span><span class="o">;</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getLayoutId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">item_text</span><span class="o">;</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+        <span class="n">ActivityMainBinding</span> <span class="n">mViewDataBinding</span> <span class="o">=</span> <span class="n">DataBindingUtil</span><span class="o">.</span><span class="na">setContentView</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">activity_main</span><span class="o">);</span>
+        <span class="n">EasyAdapter</span><span class="o">&lt;</span><span class="n">BaseRecyclerModel</span><span class="o">&gt;</span> <span class="n">adapter</span><span class="o">=</span><span class="k">new</span> <span class="n">EasyAdapter</span><span class="o">&lt;&gt;();</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">BaseRecyclerModel</span><span class="o">&gt;</span> <span class="n">lst</span><span class="o">=</span><span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">lst</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">ImageItem</span><span class="o">(</span><span class="mi">1</span><span class="o">));</span>
+        <span class="n">lst</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">TextItem</span><span class="o">(</span><span class="s">"Ahmad"</span><span class="o">));</span>
+        <span class="n">lst</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">ImageItem</span><span class="o">(</span><span class="mi">2</span><span class="o">));</span>
+        <span class="n">lst</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">TextItem</span><span class="o">(</span><span class="s">"Aghazadeh"</span><span class="o">));</span>
+        <span class="n">adapter</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="n">lst</span><span class="o">);</span>
+        <span class="n">adapter</span><span class="o">.</span><span class="na">setEmptyItemViewModelListener</span><span class="o">(</span><span class="k">new</span> <span class="n">EmptyViewModel</span><span class="o">.</span><span class="na">EmptyItemViewModelListener</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onRetryClick</span><span class="o">()</span> <span class="o">{</span>
+                <span class="n">Toast</span><span class="o">.</span><span class="na">makeText</span><span class="o">(</span><span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span><span class="s">"onRetryClick"</span><span class="o">,</span><span class="n">Toast</span><span class="o">.</span><span class="na">LENGTH_LONG</span><span class="o">).</span><span class="na">show</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+        <span class="n">mViewDataBinding</span><span class="o">.</span><span class="na">recycler</span><span class="o">.</span><span class="na">setAdapter</span><span class="o">(</span><span class="n">adapter</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><a href="https://github.com/ahmadaghazadeh/EasyRecycler">EasyRecycler</a> is maintained by <a href="https://github.com/ahmadaghazadeh">ahmadaghazadeh</a>.</span>
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+      </footer>
+    </section>
+
+    
+  
+
+</body>
+
+ 
+
